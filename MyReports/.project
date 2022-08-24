@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>MyReports</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>net.sf.jasperreports.builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>net.sf.jasperreports.nature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>hello_world.jasper</name>
+			<type>1</type>
+			<location>C:/laravel/jasperphp/vendor/cossou/jasperphp/examples/hello_world.jasper</location>
+		</link>
+		<link>
+			<name>hello_world.jrxml</name>
+			<type>1</type>
+			<location>C:/laravel/jasperphp/vendor/cossou/jasperphp/examples/hello_world.jrxml</location>
+		</link>
+		<link>
+			<name>testeJasper.jasper</name>
+			<type>1</type>
+			<location>C:/laravel/jasperReport/storage/app/public/relatorios/testeJasper.jasper</location>
+		</link>
+		<link>
+			<name>testeJasper.jrxml</name>
+			<type>1</type>
+			<location>C:/laravel/jasperReport/storage/app/public/relatorios/testeJasper.jrxml</location>
+		</link>
+	</linkedResources>
+</projectDescription>

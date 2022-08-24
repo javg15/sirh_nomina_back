@@ -1,0 +1,35 @@
+{
+    "name": "js-jwt-auth-postgresql",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "nodejs",
+        "express",
+        "jwt",
+        "authentication",
+        "postgresql"
+    ],
+    "author": "jaime",
+    "license": "MIT",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.19.0",
+        "cors": "^2.8.5",
+        "exceljs": "^4.2.1",
+        "express": "^4.17.1",
+        "fastest-validator": "^1.9.0",
+        "java": "^0.12.1",
+        "jsonwebtoken": "^8.5.1",
+        "multer": "^1.4.2",
+        "node-jasper": "^0.2.5",
+        "nodemon": "^2.0.7",
+        "pg": "^8.5.1",
+        "pg-hstore": "^2.3.3",
+        "request": "^2.88.2",
+        "sequelize": "^6.3.5"
+    }
+}

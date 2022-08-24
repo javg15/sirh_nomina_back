@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Factura2" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f475be1e-5a01-4c7e-91a0-abf69b733ed1">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="381"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="607"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="LCI_Blog"/>
+	<queryString language="SQL">
+		<![CDATA[-- Obtener la Factura Nro. 1 de la Base de Datos
+
+SELECT 
+	f.id_factura, 
+	c.nombre, 
+	f.sub_total, 
+	f.impuesto, 
+	f.porc_impuesto, 
+	f.total_general,
+	fd.renglon,
+	p.descripcion,
+	fd.cantidad,
+	fd.precio,
+	fd.total
+FROM facturas f
+INNER JOIN clientes c ON (f.id_cliente = c.id_cliente)
+INNER JOIN facturas_det fd ON (f.id_factura = fd.id_factura)
+INNER JOIN productos p ON (fd.id_producto = p.id_producto)
+WHERE f.id_factura = 1
+ORDER BY fd.renglon]]>
+	</queryString>
+	<field name="id_factura" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="id_factura"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="facturas"/>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="sub_total" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="sub_total"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="facturas"/>
+	</field>
+	<field name="impuesto" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="impuesto"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="facturas"/>
+	</field>
+	<field name="porc_impuesto" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="porc_impuesto"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="facturas"/>
+	</field>
+	<field name="total_general" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="total_general"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="facturas"/>
+	</field>
+	<field name="renglon" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="renglon"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="facturas_det"/>
+	</field>
+	<field name="descripcion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="descripcion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="productos"/>
+	</field>
+	<field name="cantidad" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="cantidad"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="facturas_det"/>
+	</field>
+	<field name="precio" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="precio"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="facturas_det"/>
+	</field>
+	<field name="total" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="total"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="facturas_det"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="82" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="10" width="100" height="30" uuid="d782447e-2fcc-48de-9880-a4be89ed990e"/>
+				<text><![CDATA[CHOCOLATERIA	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="240" y="24" width="100" height="30" forecolor="#000000" uuid="357fd5aa-82a3-4c91-83d7-7a49c09f7e9b"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[FACTURA]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="480" y="10" width="100" height="30" uuid="373825cd-17aa-4b7d-bda3-02b0d405604b"/>
+				<textFieldExpression><![CDATA[$F{id_factura}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="61" width="100" height="20" uuid="0fd2bb6d-07a8-4e2b-9013-d3109242b73f"/>
+				<text><![CDATA[CLIENTE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="110" y="61" width="100" height="20" uuid="3faf2b6b-be2d-4481-9758-3615165a26c8"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="34" splitType="Stretch">
+			<staticText>
+				<reportElement x="2" y="13" width="78" height="16" uuid="22ef41fe-19af-4ef8-b833-c618c1e731e9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Renglón]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="13" width="199" height="16" uuid="afee37de-6a82-49a0-8a08-f86a0af395e6"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="13" width="78" height="16" uuid="590776d0-7112-4ece-9f6a-495bf64410a1"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="13" width="78" height="16" uuid="c43facf9-b6ff-4ca6-b4dc-9f96df655a66"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="13" width="78" height="16" uuid="99a2f5d1-b30c-4c9c-99db-7e17c759881f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="7" width="80" height="20" uuid="dd8dc28e-5aa6-41e6-a9f3-2b646325f0f3"/>
+				<textFieldExpression><![CDATA[$F{renglon}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="7" width="200" height="20" uuid="25f6dfb5-269c-4814-ae1d-34c296a6c070"/>
+				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="7" width="100" height="20" uuid="ba0db746-982e-4c19-8230-f013fee4f11e"/>
+				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="7" width="100" height="20" uuid="be0900ae-232f-4e6e-be07-00e46d85d52e"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{precio}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤#,##0.00;¤-#,##0.00">
+				<reportElement x="480" y="7" width="90" height="20" uuid="d5864c80-a3ad-4c8e-9dde-e7568710b4c8"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="75" splitType="Stretch">
+			<staticText>
+				<reportElement x="390" y="6" width="78" height="16" uuid="0a766977-2017-40ed-8b94-d8b7c1b5dfa0"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Subtotal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="390" y="28" width="78" height="16" uuid="57df1803-bafd-41e1-ac23-e7e9fa4c2dab"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Impuesto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="391" y="50" width="78" height="16" uuid="a6ba59dd-c951-417c-a2b7-0605fd1e9e64"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<textField pattern="¤#,##0.00;¤-#,##0.00">
+				<reportElement x="480" y="6" width="90" height="15" uuid="5ff64e2e-d04b-4941-a441-18472ee68834"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{sub_total}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤#,##0.00;¤-#,##0.00">
+				<reportElement x="480" y="28" width="90" height="15" uuid="51bc4187-de9c-4d21-a147-e8330cce940f"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{impuesto}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤#,##0.00;¤-#,##0.00">
+				<reportElement x="480" y="50" width="90" height="15" uuid="86a597fb-61cd-4d3c-87ca-d8bf175ac7cd"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_general}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+</jasperReport>

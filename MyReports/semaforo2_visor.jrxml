@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="semaforo2_visor" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ac653a11-b78a-45e4-9565-aea5fa135795">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="UrlSemaforoImg" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="10" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="792" height="30" forecolor="#006699" backcolor="#006699" uuid="bac7a6a6-400d-4f85-8900-b9fc13bc3aa3"/>
+				<staticText>
+					<reportElement key="" mode="Transparent" x="231" y="0" width="559" height="30" forecolor="#FFFFFF" backcolor="#000000" uuid="db69812f-2aef-40d0-b287-67ee5b3815b6"/>
+					<textElement textAlignment="Right">
+						<font size="18" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Semaforo]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<detail>
+		<band height="356" splitType="Stretch">
+			<image>
+				<reportElement x="75" y="91" width="50" height="50" uuid="f1b0fe55-5e9f-4b1c-b025-418859b5052f"/>
+				<imageExpression><![CDATA[$P{UrlSemaforoImg}]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+</jasperReport>
