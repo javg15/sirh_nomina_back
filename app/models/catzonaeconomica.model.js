@@ -1,32 +1,32 @@
 module.exports = function(sequelize, DataTypes) {
-    return sequelize.define('catvariablesbase', {
+    return sequelize.define('catzonaeconomica', {
         id: {
             autoIncrement: true,
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true
         },
-        nombre: {
-            type: DataTypes.STRING,
+        clave: {
+            type: DataTypes.INTEGER,
             allowNull: true
         },
-        tabla: {
-            type: DataTypes.STRING,
+        porcentaje: {
+            type: DataTypes.INTEGER,
             allowNull: true
         },
-        campo: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        funcion: {
-            type: DataTypes.STRING,
-            allowNull: true
+        state: {
+            type: DataTypes.CHAR(1),
+            allowNull: true,
+            defaultValue: "A"
         },
         descripcion: {
             type: DataTypes.STRING,
             allowNull: true
         },
-        
+        id_usuarios_r: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
         created_at: {
             type: DataTypes.DATE,
             allowNull: true
@@ -35,19 +35,10 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.DATE,
             allowNull: true
         },
-        id_usuarios_r: {
-            type: DataTypes.INTEGER,
-            allowNull: true
-        },
-        state: {
-            type: DataTypes.CHAR(1),
-            allowNull: false,
-            defaultValue: "A"
-        },
     }, {
         sequelize,
-        tableName: 'catvariablesbase',
-        schema: 'nomina',
+        tableName: 'catzonaeconomica',
+        schema: 'public',
         //timestamps: false
 
         createdAt: 'created_at',

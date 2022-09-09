@@ -2,7 +2,7 @@ const db = require("../models");
 const { Op } = require("sequelize");
 const mensajesValidacion = require("../config/validate.config");
 const globales = require("../config/global.config");
-const Catvariablesbase = db.catvariablesbase;
+const Catpercepciones = db.catpercepciones;
 
 const { QueryTypes } = require('sequelize');
 let Validator = require('fastest-validator');
@@ -18,7 +18,7 @@ exports.getAdmin = async(req, res) => {
         query = "";
 
     if (req.body.solocabeceras == 1) {
-        query = "SELECT * FROM nomina.s_catvariablesbase_mgr('&modo=10&id_usuario=:id_usuario')"; //el modo no existe, solo es para obtener un registro
+        query = "SELECT * FROM nomina.s_catpercepciones_mgr('&modo=10&id_usuario=:id_usuario')"; //el modo no existe, solo es para obtener un registro
 
         datos = await db.sequelize.query(query, {
             replacements: {
@@ -29,7 +29,7 @@ exports.getAdmin = async(req, res) => {
             type: QueryTypes.SELECT
         });
     } else {
-        query = "SELECT * FROM nomina.s_catvariablesbase_mgr('" +
+        query = "SELECT * FROM nomina.s_catpercepciones_mgr('" +
             "&modo=0&id_usuario=:id_usuario" +
             "&inicio=:start&largo=:length" +
             "&scampo=" + req.body.opcionesAdicionales.datosBusqueda.campo + "&soperador=" + req.body.opcionesAdicionales.datosBusqueda.operador + "&sdato=" + req.body.opcionesAdicionales.datosBusqueda.valor +
@@ -85,17 +85,17 @@ exports.getAdmin = async(req, res) => {
 
 exports.getRecord = async(req, res) => {
 
-    Catvariablesbase.findOne({
+    Catpercepciones.findOne({
             where: {
                 id: req.body.id
             }
         })
-        .then(catvariablesbase => {
-            if (!catvariablesbase) {
-                return res.status(404).send({ message: "Catvariablesbase Not found." });
+        .then(catpercepciones => {
+            if (!catpercepciones) {
+                return res.status(404).send({ message: "Catpercepciones Not found." });
             }
 
-            res.status(200).send(catvariablesbase);
+            res.status(200).send(catpercepciones);
         })
         .catch(err => {
             res.status(500).send({ message: err.message });
@@ -109,43 +109,14 @@ exports.setRecord = async(req, res) => {
                 req.body.dataPack[key] = parseInt(req.body.dataPack[key]);
         }
     })
-console.log("req.body.record_tipoelemento=>",req.body.record_tipoelemento)
+
     /* customer validator shema */
     const dataVSchema = {
         /*first_name: { type: "string", min: 1, max: 50, pattern: namePattern },*/
 
         id: { type: "number" },
-        nombre: { type: "string", 
-            custom(value, errors) {
-                if (value.toString().length <= 0) errors.push({ type: "selection" })
-                return value; // Sanitize: remove all special chars except numbers
-            }
-         },
-        tabla: { type: "string",  
-            custom(value, errors) {
-                if(req.body.record_tipoelemento.trim().length<=0) errors.push({ type:'selection',field:'tipoelemento'})
-                if(req.body.record_tipoelemento.toUpperCase()=="TABLA" &&
-                    value.toString().length <= 0) errors.push({ type: "selection" })
-                return value; // Sanitize: remove all special chars except numbers
-            }
-        },
-        campo: { type: "string",  
-            custom(value, errors) {
-                if(req.body.record_tipoelemento.trim().length<=0) errors.push({ type:'selection',field:'tipoelemento'})
-                if(req.body.record_tipoelemento.toUpperCase()=="TABLA" &&
-                    value.toString().length <= 0) errors.push({ type: "selection" })
-                return value; // Sanitize: remove all special chars except numbers
-            }
-        },
-        funcion: { type: "string",  
-            custom(value, errors) {
-                if(req.body.record_tipoelemento.trim().length<=0) errors.push({ type:'selection',field:'tipoelemento'})
-                if(req.body.record_tipoelemento.toUpperCase()=="FUNCION" &&
-                    value.toString().length <= 0) errors.push({ type: "selection" })
-                return value; // Sanitize: remove all special chars except numbers
-            }
-        },
-        
+        clave: { type: "string", max: 4 },
+        nombre: { type: "string", min: 5 },
     };
 
     var vres = true;
@@ -177,7 +148,7 @@ console.log("req.body.record_tipoelemento=>",req.body.record_tipoelemento)
     }
 
     //buscar si existe el registro
-    Catvariablesbase.findOne({
+    Catpercepciones.findOne({
             where: {
                 [Op.and]: [{ id: req.body.dataPack.id }, {
                     id: {
@@ -186,15 +157,15 @@ console.log("req.body.record_tipoelemento=>",req.body.record_tipoelemento)
                 }],
             }
         })
-        .then(catvariablesbase => {
-            if (!catvariablesbase) {
+        .then(catpercepciones => {
+            if (!catpercepciones) {
                 delete req.body.dataPack.id;
                 delete req.body.dataPack.created_at;
                 delete req.body.dataPack.updated_at;
                 req.body.dataPack.id_usuarios_r = req.userId;
                 req.body.dataPack.state = globales.GetStatusSegunAccion(req.body.actionForm);
 
-                Catvariablesbase.create(
+                Catpercepciones.create(
                     req.body.dataPack
                 ).then((self) => {
                     // here self is your instance, but updated
@@ -208,7 +179,7 @@ console.log("req.body.record_tipoelemento=>",req.body.record_tipoelemento)
                 req.body.dataPack.id_usuarios_r = req.userId;
                 req.body.dataPack.state = globales.GetStatusSegunAccion(req.body.actionForm);
 
-                catvariablesbase.update(req.body.dataPack).then((self) => {
+                catpercepciones.update(req.body.dataPack).then((self) => {
                     // here self is your instance, but updated
                     res.status(200).send({ message: "success", id: self.id });
                 });
@@ -221,19 +192,19 @@ console.log("req.body.record_tipoelemento=>",req.body.record_tipoelemento)
         });
 }
 
-
 exports.getCatalogo = async(req, res) => {
-    Catvariablesbase.findAll({
-            attributes: ['id', 'nombre', 'descripcion',  ["nombre", "text"]],
+
+    Catpercepciones.findAll({
+            attributes: ['id', [db.sequelize.literal("clave || ' - ' || nombre"),"text"], 'clave'],
             order: [
-                ['nombre', 'ASC'],
+                [db.sequelize.literal("clave || ' - ' || nombre"), 'ASC'],
             ]
-        }).then(catvariablesbase => {
-            if (!catvariablesbase) {
-                return res.status(404).send({ message: "Catvariablesbase Not found." });
+        }).then(catpercepciones => {
+            if (!catpercepciones) {
+                return res.status(404).send({ message: "Catpercepciones Not found." });
             }
 
-            res.status(200).send(catvariablesbase);
+            res.status(200).send(catpercepciones);
         })
         .catch(err => {
             res.status(500).send({ message: err.message });

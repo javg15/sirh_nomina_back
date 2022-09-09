@@ -46,7 +46,11 @@ db.sequelizeNomina = sequelizeNomina;
 
 db.user = require("../models/user.model.js")(sequelize, Sequelize);
 db.catplanteles = require("../models/catplanteles.model.js")(sequelize, Sequelize);
-db.catvariablesbase = require("../models/catvariablesbase.model.js")(sequelize, Sequelize);
 db.personal = require("../models/personal.model.js")(sequelize, Sequelize);
-
+db.catpercepciones = require("../models/catpercepciones.model.js")(sequelize, Sequelize);
+db.catdeducciones = require("../models/catdeducciones.model.js")(sequelize, Sequelize);
+db.categoriasasignacion = require("./categoriasasignacion.model.js")(sequelize, Sequelize);
+db.catquincena = require("./catquincena.model.js")(sequelize, Sequelize);
+db.categorias = require("./categorias.model.js")(sequelize, Sequelize);
+db.catzonaeconomica = require("./catzonaeconomica.model.js")(sequelize, Sequelize);
 module.exports = db;

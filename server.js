@@ -65,7 +65,13 @@ require('./app/routes/user.routes')(app);
 require('./app/routes/personal.routes')(app);
 require('./app/routes/shared.routes')(app);
 require('./app/routes/catplanteles.routes')(app);
-require('./app/routes/catvariablesbase.routes')(app);
+require('./app/routes/catpercepciones.routes')(app);
+require('./app/routes/catdeducciones.routes')(app);
+require('./app/routes/categoriasasignacion.routes')(app);
+require('./app/routes/catquincena.routes')(app);
+require('./app/routes/catzonaeconomica.routes')(app);
+require('./app/routes/categorias.routes')(app);
+
 
 /*app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);

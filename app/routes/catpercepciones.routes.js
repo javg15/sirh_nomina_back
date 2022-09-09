@@ -1,5 +1,5 @@
 const { authJwt } = require("../middleware");
-const controller = require("../controllers/catvariablesbase.controller");
+const controller = require("../controllers/catpercepciones.controller");
 
 module.exports = function(app) {
     app.use(function(req, res, next) {
@@ -10,20 +10,20 @@ module.exports = function(app) {
         next();
     });
     app.post(
-        "/api/catvariablesbase/getAdmin", [authJwt.verifyToken],
+        "/api/catpercepciones/getAdmin", [authJwt.verifyToken],
         controller.getAdmin
     );
     app.post(
-        "/api/catvariablesbase/getRecord", [authJwt.verifyToken],
+        "/api/catpercepciones/getRecord", [authJwt.verifyToken],
         controller.getRecord
     );
 
     app.post(
-        "/api/catvariablesbase/setRecord", [authJwt.verifyToken],
+        "/api/catpercepciones/setRecord", [authJwt.verifyToken],
         controller.setRecord
     );
     app.post(
-        "/api/catvariablesbase/getCatalogo", [authJwt.verifyToken],
+        "/api/catpercepciones/getCatalogo", [authJwt.verifyToken],
         controller.getCatalogo
     );
 };
