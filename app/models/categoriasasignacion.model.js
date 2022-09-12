@@ -30,6 +30,10 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             allowNull: true
         },
+        id_personal: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
         state: {
             type: DataTypes.STRING,
             allowNull: true
