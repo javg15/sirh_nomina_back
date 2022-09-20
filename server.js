@@ -71,7 +71,10 @@ require('./app/routes/categoriasasignacion.routes')(app);
 require('./app/routes/catquincena.routes')(app);
 require('./app/routes/catzonaeconomica.routes')(app);
 require('./app/routes/categorias.routes')(app);
-
+require('./app/routes/percepcionescaptura.routes')(app);
+require('./app/routes/deduccionescaptura.routes')(app);
+require('./app/routes/cattiposadeudos.routes')(app);
+require('./app/routes/percepcionesadeudos.routes')(app);
 
 /*app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);

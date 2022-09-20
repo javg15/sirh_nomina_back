@@ -51,6 +51,11 @@ db.catpercepciones = require("../models/catpercepciones.model.js")(sequelize, Se
 db.catdeducciones = require("../models/catdeducciones.model.js")(sequelize, Sequelize);
 db.categoriasasignacion = require("./categoriasasignacion.model.js")(sequelize, Sequelize);
 db.catquincena = require("./catquincena.model.js")(sequelize, Sequelize);
+db.cattiposadeudos = require("./cattiposadeudos.model.js")(sequelize, Sequelize);
 db.categorias = require("./categorias.model.js")(sequelize, Sequelize);
 db.catzonaeconomica = require("./catzonaeconomica.model.js")(sequelize, Sequelize);
+db.percepcionescaptura = require("../models/percepcionescaptura.model.js")(sequelize, Sequelize);
+db.deduccionescaptura = require("../models/deduccionescaptura.model.js")(sequelize, Sequelize);
+db.percepcionesadeudos = require("../models/percepcionesadeudos.model.js")(sequelize, Sequelize);
+
 module.exports = db;

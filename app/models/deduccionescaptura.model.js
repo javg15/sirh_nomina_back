@@ -1,41 +1,42 @@
 module.exports = function(sequelize, DataTypes) {
-    return sequelize.define('catpercepciones', {
+    return sequelize.define('deduccionescaptura', {
         id: {
             autoIncrement: true,
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true
         },
-        clave: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        nombre: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        gravar: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        federalestatal: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        id_partida: {
+        id_personal: {
             type: DataTypes.INTEGER,
             allowNull: true
         },
-        ambito: {
-            type: DataTypes.STRING,
+        id_plantillasdocsnombramiento: {
+            type: DataTypes.INTEGER,
             allowNull: true
         },
-        funcioncalculo: {
-            type: DataTypes.STRING,
+        id_plazas: {
+            type: DataTypes.INTEGER,
             allowNull: true
         },
-        datoextra: {
-            type: DataTypes.STRING,
+        id_catdeducciones: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        importetotal: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+
+        id_catquincena_ini: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        id_catquincena_fin: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        cantidadquincenas: {
+            type: DataTypes.INTEGER,
             allowNull: true
         },
         state: {
@@ -56,7 +57,7 @@ module.exports = function(sequelize, DataTypes) {
         }
     }, {
         sequelize,
-        tableName: 'catpercepciones',
+        tableName: 'deduccionescaptura',
         schema: 'nomina',
         //timestamps: false
 

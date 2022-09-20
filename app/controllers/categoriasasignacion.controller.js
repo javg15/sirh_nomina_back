@@ -450,15 +450,19 @@ exports.setRecord = async(req, res) => {
             if (req.body.dataPack[key] != '')
                 req.body.dataPack[key] = parseInt(req.body.dataPack[key]);
         }
+        if (typeof req.body.dataPack[key] == 'number' && isNaN(parseFloat(req.body.dataPack[key]))) {
+            req.body.dataPack[key] = 0;
+        }
     })
 
     let categoriasasignacionExiste=false;
-    //revisar si el personal está activo en otra plantilla
+    //revisar si la combinación de campos, ya existe
     await Categoriasasignacion.findOne({
         where: {
             [Op.and]: [
                 { id_categorias: req.body.dataPack.id_categorias },
                 { id_catpercdeduc: req.body.dataPack.id_catpercdeduc },
+                { id_personal: req.body.dataPack.id_personal },
                 { tipopercdeduc: req.body.dataPack.tipopercdeduc },
                 { [Op.not]: [{ id: req.body.dataPack.id }] },
                 { state: 'A' },
@@ -479,11 +483,45 @@ exports.setRecord = async(req, res) => {
         id: { type: "number" },
         id_categorias: { type: "number" ,
             custom(value, errors) {
-                if (categoriasasignacionExiste) errors.push({ type: "uniqueRecord" })
+                if(req.body.record_tipomovimiento=="C"){
+                    if(categoriasasignacionExiste) errors.push({ type: "uniqueRecord" })
+                    if(value <= 0) errors.push({ type: "selection" })
+                }
                 return value; // Sanitize: remove all special chars except numbers
             }
         },
-        id_catpercdeduc: { type: "number" },
+        id_personal: { type: "number" ,
+            custom(value, errors) {
+                if(req.body.record_tipomovimiento=="E"){
+
+                    if(categoriasasignacionExiste) errors.push({ type: "uniqueRecord" })
+                    if(value <= 0) errors.push({ type: "selection" })
+                }
+                
+                return value; // Sanitize: remove all special chars except numbers
+            }
+        },
+        id_catpercdeduc: {
+            type: "number",
+            custom(value, errors) {
+                if (value <= 0) errors.push({ type: "selection" })
+                return value; // Sanitize: remove all special chars except numbers
+            }
+        },
+        id_catquincena_ini: {
+            type: "number",
+            custom(value, errors) {
+                if (value <= 0) errors.push({ type: "selection" })
+                return value; // Sanitize: remove all special chars except numbers
+            }
+        },
+        id_catquincena_fin: {
+            type: "number",
+            custom(value, errors) {
+                if (value <= 0) errors.push({ type: "selection" })
+                return value; // Sanitize: remove all special chars except numbers
+            }
+        },
         tipopercdeduc: { type: "string" },
     };
 
