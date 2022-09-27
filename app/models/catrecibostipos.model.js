@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    return sequelize.define('catpercepciones', {
+    return sequelize.define('catrecibostipos', {
         id: {
             autoIncrement: true,
             type: DataTypes.INTEGER,
@@ -10,38 +10,27 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: true
         },
-        nombre: {
+
+        descripcion: {
             type: DataTypes.STRING,
             allowNull: true
         },
-        gravar: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        federalestatal: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        id_partida: {
+
+        afectaissste: {
             type: DataTypes.INTEGER,
             allowNull: true
         },
-        ambito: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        funcioncalculo: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        datoextra: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        id_catpercepciones_adeudo: {
+
+        excluirparaissste: {
             type: DataTypes.INTEGER,
             allowNull: true
         },
+
+        permitecapturadatoscomp: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        
         state: {
             type: DataTypes.STRING,
             allowNull: true
@@ -60,7 +49,7 @@ module.exports = function(sequelize, DataTypes) {
         }
     }, {
         sequelize,
-        tableName: 'catpercepciones',
+        tableName: 'catrecibostipos',
         schema: 'nomina',
         //timestamps: false
 

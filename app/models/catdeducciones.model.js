@@ -38,7 +38,7 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: true
         },
-        id_catpercepcion_afectada:{
+        id_catpercepciones_afectada:{
             type: DataTypes.INTEGER,
             allowNull: true
         },

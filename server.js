@@ -71,10 +71,17 @@ require('./app/routes/categoriasasignacion.routes')(app);
 require('./app/routes/catquincena.routes')(app);
 require('./app/routes/catzonaeconomica.routes')(app);
 require('./app/routes/categorias.routes')(app);
+require('./app/routes/catfondospresupuestales.routes')(app);
+require('./app/routes/catrecibosestatus.routes')(app);
+require('./app/routes/catrecibostipos.routes')(app);
 require('./app/routes/percepcionescaptura.routes')(app);
 require('./app/routes/deduccionescaptura.routes')(app);
 require('./app/routes/cattiposadeudos.routes')(app);
+require('./app/routes/cattiposdevoluciones.routes')(app);
 require('./app/routes/percepcionesadeudos.routes')(app);
+require('./app/routes/deduccionesdevoluciones.routes')(app);
+require('./app/routes/reducciones.routes')(app);
+require('./app/routes/recibos.routes')(app);
 
 /*app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);

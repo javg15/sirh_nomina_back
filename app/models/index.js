@@ -52,10 +52,17 @@ db.catdeducciones = require("../models/catdeducciones.model.js")(sequelize, Sequ
 db.categoriasasignacion = require("./categoriasasignacion.model.js")(sequelize, Sequelize);
 db.catquincena = require("./catquincena.model.js")(sequelize, Sequelize);
 db.cattiposadeudos = require("./cattiposadeudos.model.js")(sequelize, Sequelize);
+db.cattiposdevoluciones = require("./cattiposdevoluciones.model.js")(sequelize, Sequelize);
+db.catfondospresupuestales = require("./catfondospresupuestales.model.js")(sequelize, Sequelize);
+db.catrecibosestatus = require("./catrecibosestatus.model.js")(sequelize, Sequelize);
+db.catrecibostipos = require("./catrecibostipos.model.js")(sequelize, Sequelize);
 db.categorias = require("./categorias.model.js")(sequelize, Sequelize);
 db.catzonaeconomica = require("./catzonaeconomica.model.js")(sequelize, Sequelize);
 db.percepcionescaptura = require("../models/percepcionescaptura.model.js")(sequelize, Sequelize);
 db.deduccionescaptura = require("../models/deduccionescaptura.model.js")(sequelize, Sequelize);
 db.percepcionesadeudos = require("../models/percepcionesadeudos.model.js")(sequelize, Sequelize);
+db.deduccionesdevoluciones = require("../models/deduccionesdevoluciones.model.js")(sequelize, Sequelize);
+db.reducciones = require("../models/reducciones.model.js")(sequelize, Sequelize);
+db.recibos = require("../models/recibos.model.js")(sequelize, Sequelize);
 
 module.exports = db;

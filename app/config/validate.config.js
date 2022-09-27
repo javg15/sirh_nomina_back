@@ -66,6 +66,7 @@ module.exports = {
     usuarioLibre: "La personal con el CURP '{actual}', ya tiene asignado el usuario de sistema '{expected}' ",
     horasPlazas: "Registre las plazas u horas autorizadas segun sea su selección ",
     quincenaFin: "La quincena final no puede ser menor a la quincena inicial ",
+    quincenaIniMenorActiva: "La quincena inicial no puede ser menor a la quincena activa ",
     horasAcumuladas: "Las horas acumuladas de '{actual}' en la zona del plantel, superan a las horas autorizadas de '{expected}'",
     unique: "El valor '{actual}' ya existe en la Base de Datos",
     uniqueRecord: "El registro ya existe en la Base de Datos",

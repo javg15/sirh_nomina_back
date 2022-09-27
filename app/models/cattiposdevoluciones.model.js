@@ -1,44 +1,20 @@
 module.exports = function(sequelize, DataTypes) {
-    return sequelize.define('catpercepciones', {
+    return sequelize.define('cattiposdevoluciones', {
         id: {
             autoIncrement: true,
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true
         },
-        clave: {
+        descripcion: {
             type: DataTypes.STRING,
             allowNull: true
         },
-        nombre: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        gravar: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        federalestatal: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        id_partida: {
+        id_catplantillas: {
             type: DataTypes.INTEGER,
             allowNull: true
         },
-        ambito: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        funcioncalculo: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        datoextra: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        id_catpercepciones_adeudo: {
+        condias: {
             type: DataTypes.INTEGER,
             allowNull: true
         },
@@ -60,7 +36,7 @@ module.exports = function(sequelize, DataTypes) {
         }
     }, {
         sequelize,
-        tableName: 'catpercepciones',
+        tableName: 'cattiposdevoluciones',
         schema: 'nomina',
         //timestamps: false
 
