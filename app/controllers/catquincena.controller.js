@@ -167,6 +167,34 @@ exports.getCatalogo = async(req, res) => {
     res.status(200).send(datos);
 }
 
+exports.getCatalogoRetroactivo = async(req, res) => {
+    let query = "select c.id,concat(anio, lpad(c.quincena::text,2,0::text),'-',lpad(c.adicional::text,2,0::text)) as text,c.anio,c.quincena " +
+        "from catquincena as c " +
+        "where c.pagoderetroactividad=1 AND c.id_catestatusquincena>0  " + //OR c.id_catestatusquincena<4
+        "and c.state in ('A','B') " +
+        "order by concat(anio, lpad(c.quincena::text,2,0::text)) DESC ";
+
+    datos = await db.sequelize.query(query, {
+        // A function (or false) for logging your queries
+        // Will get called for every SQL query that gets sent
+        // to the server.
+        logging: console.log,
+
+        replacements: {
+            
+        },
+        // If plain is true, then sequelize will only return the first
+        // record of the result set. In case of false it will return all records.
+        plain: false,
+
+        // Set this to true if you don't have a model definition for your query.
+        raw: true,
+        type: QueryTypes.SELECT
+    });
+
+    res.status(200).send(datos);
+}
+
 exports.getCatalogoMayorActiva = async(req, res) => {
     let query = "WITH qactiva as( " +
         "   SELECT id,concat(anio,lpad(quincena::text,2,'0')) as activa " +

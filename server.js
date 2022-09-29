@@ -82,6 +82,8 @@ require('./app/routes/percepcionesadeudos.routes')(app);
 require('./app/routes/deduccionesdevoluciones.routes')(app);
 require('./app/routes/reducciones.routes')(app);
 require('./app/routes/recibos.routes')(app);
+require('./app/routes/retroactivos.routes')(app);
+require('./app/routes/compensaciones.routes')(app);
 
 /*app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);

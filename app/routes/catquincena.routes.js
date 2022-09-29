@@ -25,6 +25,10 @@ module.exports = function(app) {
         "/api/catquincena/getCatalogoMayorActiva", [authJwt.verifyToken],
         controller.getCatalogoMayorActiva
     );
+    app.post(
+        "/api/catquincena/getCatalogoRetroactivo", [authJwt.verifyToken],
+        controller.getCatalogoRetroactivo
+    );
     
 
     app.post(
