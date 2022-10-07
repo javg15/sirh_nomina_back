@@ -228,6 +228,40 @@ exports.getCatalogoMayorActiva = async(req, res) => {
     res.status(200).send(datos);
 }
 
+exports.getCatalogoMenorActiva = async(req, res) => {
+    let query = "WITH qactiva as( " +
+        "   SELECT id,concat(anio,lpad(quincena::text,2,'0')) as activa " +
+        "   FROM catquincena " +
+        "   WHERE id_catestatusquincena= 1 or id_catestatusquincena= 2 " +
+        "   limit 1 " +
+        ") " +
+        "SELECT q.id,concat(anio, lpad(q.quincena::text,2,0::text)) as text,q.anio,q.quincena " +
+        "FROM catquincena as q,qactiva as qa " +
+        "WHERE concat(q.anio,lpad(q.quincena::text,2,'0'))<=qa.activa " +
+        "   AND q.state IN ('A','B') " +
+        "ORDER BY concat(anio, lpad(q.quincena::text,2,0::text)) DESC ";
+
+    datos = await db.sequelize.query(query, {
+        // A function (or false) for logging your queries
+        // Will get called for every SQL query that gets sent
+        // to the server.
+        logging: console.log,
+
+        replacements: {
+            anio: req.body.anio,
+        },
+        // If plain is true, then sequelize will only return the first
+        // record of the result set. In case of false it will return all records.
+        plain: false,
+
+        // Set this to true if you don't have a model definition for your query.
+        raw: true,
+        type: QueryTypes.SELECT
+    });
+
+    res.status(200).send(datos);
+}
+
 
 exports.getCatalogoSegunAnio = async(req, res) => {
 

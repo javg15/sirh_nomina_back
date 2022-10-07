@@ -66,5 +66,6 @@ db.reducciones = require("../models/reducciones.model.js")(sequelize, Sequelize)
 db.recibos = require("../models/recibos.model.js")(sequelize, Sequelize);
 db.retroactivos = require("../models/retroactivos.model.js")(sequelize, Sequelize);
 db.compensaciones = require("../models/compensaciones.model.js")(sequelize, Sequelize);
+db.calculoprincipal = require("../models/calculoprincipal.model.js")(sequelize, Sequelize);
 
 module.exports = db;
