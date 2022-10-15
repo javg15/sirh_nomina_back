@@ -17,7 +17,10 @@ module.exports = function(app) {
         "/api/calculoprincipal/getCalculado", [authJwt.verifyToken],
         controller.getCalculado
     );
-
+    app.post(
+        "/api/calculoprincipal/getRecord", [authJwt.verifyToken],
+        controller.getRecord
+    );
     app.post(
         "/api/calculoprincipal/ejecutarCalculo", [authJwt.verifyToken],
         controller.ejecutarCalculo

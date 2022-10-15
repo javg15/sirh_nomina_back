@@ -1,24 +1,43 @@
+/* jshint indent: 2 */
+
+const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-    return sequelize.define('calculoprincipal', {
+    return sequelize.define('plazas', {
         id: {
             autoIncrement: true,
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true
         },
-        id_catquincena: {
+        id_categorias: {
             type: DataTypes.INTEGER,
             allowNull: true
         },
-        id_personal: {
+        consecutivo: {
             type: DataTypes.INTEGER,
             allowNull: true
         },
-        id_plantillasdocsnombramiento: {
+        id_catplanteles: {
             type: DataTypes.INTEGER,
             allowNull: true
         },
-        id_plazas: {
+        id_catcentrostrabajo: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        id_catplantelescobro: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        id_catzonageografica: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        id_catquincena_ini: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        id_catquincena_fin: {
             type: DataTypes.INTEGER,
             allowNull: true
         },
@@ -26,48 +45,38 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             allowNull: true
         },
-        id_personalhoras: {
+        statussicodes: {
             type: DataTypes.INTEGER,
             allowNull: true
         },
-        horaslaboradas: {
+        id_puesto: {
             type: DataTypes.INTEGER,
             allowNull: true
         },
-        id_cattiponomina: {
+        id_catsindicato: {
             type: DataTypes.INTEGER,
             allowNull: true
         },
-        id_catquincena_aplicacion: {
+        id_categoriasdetalle: {
             type: DataTypes.INTEGER,
             allowNull: true
         },
-        retroactivo: {
+        horas: {
             type: DataTypes.INTEGER,
             allowNull: true
         },
-        diaspago: {
+        horasb: {
             type: DataTypes.INTEGER,
             allowNull: true
         },
-        diasantiguedad: {
-            type: DataTypes.INTEGER,
+        estatus: {
+            type: DataTypes.STRING,
             allowNull: true
         },
-        esplazabase: {
-            type: DataTypes.INTEGER,
-            allowNull: true
-        },
-        esvigente: {
-            type: DataTypes.INTEGER,
-            allowNull: true
-        },
-        
         state: {
             type: DataTypes.STRING,
             allowNull: true
         },
-        
         created_at: {
             type: DataTypes.DATE,
             allowNull: true
@@ -76,17 +85,20 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.DATE,
             allowNull: true
         },
-        
         id_usuarios_r: {
             type: DataTypes.INTEGER,
             allowNull: true
-        }
+        },
+        id_catplanteles_comision: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+
     }, {
         sequelize,
-        tableName: 'calculo_principal',
-        schema: 'nomina',
-        //timestamps: false
-
+        tableName: 'plazas',
+        schema: 'public',
+        //timestamps: false,
         createdAt: 'created_at',
         updatedAt: 'updated_at',
     });
